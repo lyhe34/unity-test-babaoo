@@ -69,8 +69,6 @@ namespace Game
                     break;
             }
 
-            platform = "Android";
-
             // Load the cropped images.
             for (int i = 1; i < 10; i++)
             {
