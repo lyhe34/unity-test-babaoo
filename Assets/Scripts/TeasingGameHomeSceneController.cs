@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 using SceneTransitionSystem;
 
@@ -14,17 +13,17 @@ namespace TeasingGame
     }
 public class TeasingGameHomeSceneController : MonoBehaviour
 {
-    public TeasingGameScene SceneForButton;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private Text bestScoreText;
 
-    // Update is called once per frame
-    void Update()
+    public TeasingGameScene SceneForButton;
+
+    private void Start()
     {
-        
+            if (PlayerPrefs.HasKey("Best Score"))
+                bestScoreText.text = "BEST SCORE : " + PlayerPrefs.GetFloat("Best Score").ToString();
+            else
+                bestScoreText.text = "";
     }
 
    public void GoToGameScene()

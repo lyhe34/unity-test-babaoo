@@ -152,8 +152,8 @@ namespace Game
                 yield return new WaitForFixedUpdate();
             }
 
+            // Start the game.
             UIManager.Instance.DisplayMessage("START", 2);
-
             GameManager.Instance.ChangeState(GameState.Playing);
         }
 

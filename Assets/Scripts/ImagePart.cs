@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,9 +22,17 @@ namespace Game
 
         public Image3D image3D;
 
-        private void Awake() => GameManager.Instance.OnEndGame += Disable;
+        private void Awake()
+        {
+            GameManager.Instance.OnStartPlaying += Enable;
+            GameManager.Instance.OnEndGame += Disable;
+        }
 
-        private void OnDestroy() => GameManager.Instance.OnEndGame -= Disable;
+        private void OnDestroy()
+        {
+            GameManager.Instance.OnStartPlaying -= Enable;
+            GameManager.Instance.OnEndGame -= Disable;
+        }
 
 		private void Update()
 		{
@@ -152,6 +158,11 @@ namespace Game
         private void Disable()
         {
             enabled = false;
+        }
+
+        private void Enable()
+        {
+            enabled = true;
         }
     }
 }
